@@ -44,6 +44,25 @@ namespace ListaContatos.Migrations
 
                     b.ToTable("Contatos");
                 });
+
+            modelBuilder.Entity("ListaContatos.Models.FilmeModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImageLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Filmes");
+                });
 #pragma warning restore 612, 618
         }
     }
