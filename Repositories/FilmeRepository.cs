@@ -12,7 +12,9 @@ namespace ListaContatos.Repositories
         }
         public FilmeModel Add(FilmeModel filme)
         {
-            throw new NotImplementedException();
+            _context.Filmes.Add(filme);
+            _context.SaveChanges();
+            return filme;
         }
 
         public bool DeleteById(Guid id)
