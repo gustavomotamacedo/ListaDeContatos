@@ -1,5 +1,27 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model FilmeModel
 @{
+    ViewData["Title"] = "Filmes - Criar";
 }
+
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="col">
+            <h1 class="display-4">Cadastro de contato</h1>
+        </div>
+    </div>
+</div>
+<form asp-controller="Filme" asp-action="Update" method="post">
+    <input type="hidden" asp-for="@Model.Id"/>
+    <div class="mb-3">
+        <label for="input-nome" class="form-label">Nome</label>
+        <input asp-for="Nome" type="text" class="form-control" id="input-nome" required placeholder="Fulano Da Silva Beltrano">
+        @Html.ValidationMessageFor(c => c.Nome)
+    </div>
+    <div class="mb-3">
+        <label for="input-image" class="form-label"><strong>Link</strong> da imagem</label>
+        <input asp-for="ImageLink" type="text" class="form-control" id="input-image" required placeholder="example@email.com">
+        @Html.ValidationMessageFor(c => c.ImageLink)
+    </div>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <a role="button" class="btn btn-secondary" asp-controller="Contato" asp-action="Index">Cancelar</a>
+</form>

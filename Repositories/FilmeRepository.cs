@@ -19,22 +19,35 @@ namespace ListaContatos.Repositories
 
         public bool DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var filmeDB = this.GetById(id);
+            if (filmeDB == null) throw new Exception("Erro na deleção do contato!");
+            _context.Filmes.Remove(filmeDB);
+            _context.SaveChanges();
+            return true;
         }
 
         public List<FilmeModel> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Filmes.ToList();
         }
 
         public FilmeModel GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Filmes.FirstOrDefault(f => f.Id == id);
         }
 
         public FilmeModel Update(FilmeModel filme)
         {
-            throw new NotImplementedException();
+            var filmeDB = this.GetById(filme.Id);
+
+            if (filmeDB == null) throw new Exception("Erro na atualização do contato!");
+
+            filmeDB.Nome = filme.Nome;
+            filmeDB.ImageLink = filme.ImageLink;
+            _context.Filmes.Update(filmeDB);
+            _context.SaveChanges();
+
+            return filmeDB;
         }
     }
 }
