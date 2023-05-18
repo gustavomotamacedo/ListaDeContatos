@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(c => c.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
+builder.Services.AddScoped<IFilmeRepository, FilmeRepository>();
 
 var app = builder.Build();
 
